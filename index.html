@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        button {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px; /* Heart-shaped-ish */
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        button:hover {
+            background: #ff3742;
+            transform: scale(1.1);
+        }
+        #noBtn {
+            transition: none; /* Disable default hover for movement */
+        }
+        .gallery {
+            display: none;
+            margin-top: 30px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 2em;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+        .response {
+            display: none;
+            font-size: 1.3em;
+            margin-top: 20px;
+        }
+        .countdown {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container">
+        <h1>HAPPY VALENTINE'S DAY, NIMI!</h1>
+        <p class="question">Will you be my Valentine forever? <p class="question">Will you marry me someday? 💍</p>
+        <button id="yesBtn">Yes! 💖</button>
+        <button id="noBtn">No 😢</button>
+        <div class="response" id="yesResponse">
+            <p>YAYYY! I VUVEEE UU SMSMMMM MERI CHOTI SI AUR PYARII SI JANN. Here's a gallery of our memories <33:</p>
+            <div class="gallery" id="gallery">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczMKUwebjlIiTqrXr2Isp6nrNxlGeG5z91EQm6HYPNq4_NmyLIT2oQo=w451-h599-s-no-gm?authuser=0" alt="THE DAY I ASKED U OUTTT">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczMqrYfoBkGn_ixXQyTMlp4ZDsDXPo8xWd_4mnbQ-kC1NTUhM1l_aBk=w451-h599-s-no-gm?authuser=0"AND THE KISS ON THAT DAY WAS ABSOLUTE HEAVENNNN">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczM6Po5JOcxsX0kQlIzO1ffU9gyfYeabQW5CKM9luilXvEB0vnEs5KY=w277-h599-s-no-gm?authuser=0" alt="OUR BEST SUN KISSED PICCC">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOM63-BgG6piANZaVyxAbPzFul1D5bQZWRf-QFZn4xPAj3nUjAcPQ4=w1062-h599-s-no-gm?authuser=0" alt="I DIED WHEN U HELD MY FACE THAT WAYY AHAHAAAAA">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczMrWsn-Ma8DwMt-IVQ0OEcwbGcmKoKFSjxRh3FgVPvisbbosoBNQeo=w270-h599-s-no-gm?authuser=0" alt="MERAKI W THE DESIGNER BADDIE WAS ONE UNFORGETTABLE DAYY">
+		<img src="https://photos.fife.usercontent.google.com/pw/AP1GczPjJIRrlrlMSFaL2gfrAX3e23tn_5cb9GLQATbFNBdJIdiRH19bAwc=w448-h599-s-no-gm?authuser=0" alt="GARBA W U WAS THE MOST HEAVENLY EXPIRIENCE I'VE EVER HADD AND THE KISS WAS SOOO GOODDD">
+                <!-- Add more images here, e.g., <img src="your-image-url.jpg" alt="Memory 4"> -->
+            </div>
+        </div>
+        <div class="response" id="noResponse">
+            <p>Nice try! But I won't give up. Let's make some memories instead. 😘</p>
+        </div>
+    </div>
+
+    <script>
+        // Floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 500);
+
+        // Countdown to Valentine's Day (adjust year if needed)
+        const valentineDate = new Date('February 14, 2024 00:00:00').getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = valentineDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('countdown').innerHTML = `Only ${days} days and ${hours} hours until Valentine's Day!`;
+        }, 1000);
+
+        // Moving No button logic
+        const noBtn = document.getElementById('noBtn');
+        let noAttempts = 0;
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            noAttempts++;
+            moveButton();
+            if (noAttempts >= 5) {
+                document.getElementById('noResponse').style.display = 'block';
+                noBtn.style.display = 'none'; // Hide after too many tries
+            }
+        });
+
+        function moveButton() {
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            let newLeft, newTop;
+
+            do {
+                newLeft = Math.random() * (containerRect.width - btnRect.width);
+                newTop = Math.random() * (containerRect.height - btnRect.height);
+            } while (Math.abs(newLeft - btnRect.left) < 50 || Math.abs(newTop - btnRect.top) < 50); // Ensure it moves noticeably
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = newLeft + 'px';
+            noBtn.style.top = newTop + 'px';
+        }
+
+        // Yes button logic
+        document.getElementById('yesBtn').addEventListener('click', () => {
+            document.getElementById('yesResponse').style.display = 'block';
+            document.getElementById('gallery').style.display = 'block';
+            // Confetti effect
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.background = ['red', 'pink', 'gold'][Math.floor(Math.random() * 3)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.animation = 'float 3s linear';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        });
+    </script>
+</body>
+</html>
